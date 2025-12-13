@@ -1,5 +1,7 @@
 # vue-chrome-extension-template
 
+![alt text](./docs/logo.png)
+
 [中文](./README_zh.md)
 
 a simple Vue 3 project template for Chrome extension development.
