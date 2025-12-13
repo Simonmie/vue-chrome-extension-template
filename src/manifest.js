@@ -5,7 +5,19 @@ export const getManifest = () => {
     manifest_version: 3,
     name: 'Vue Chrome Extension',
     version: '0.0.0',
-    action: { default_popup: 'dist/src/popup/index.html' },
+    icons: {
+      16: 'dist/icons/logo-16.png',
+      32: 'dist/icons/logo-32.png',
+      48: 'dist/icons/logo-48.png',
+      128: 'dist/icons/logo-128.png',
+    },
+    action: {
+      default_popup: 'dist/src/popup/index.html',
+      default_icon: {
+        16: 'dist/icons/logo-16.png',
+        32: 'dist/icons/logo-32.png',
+      },
+    },
     side_panel: { default_path: 'dist/src/sidepanel/index.html' },
     options_page: 'dist/src/options/index.html',
     permissions: ['storage'],
