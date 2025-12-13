@@ -20,9 +20,11 @@ export const getManifest = () => {
     },
     side_panel: { default_path: 'dist/src/sidepanel/index.html' },
     options_page: 'dist/src/options/index.html',
-    permissions: ['storage'],
+    permissions: ['storage', 'sidePanel'],
     host_permissions: isDev ? [`http://localhost:${port}/*`] : [],
-    background: isDev ? { service_worker: 'dist/script/dev-hmr.js', type: 'module' } : undefined,
+    background: isDev
+      ? { service_worker: 'dist/script/dev-hmr.js', type: 'module' }
+      : { service_worker: 'dist/script/background.js', type: 'module' },
     web_accessible_resources: [{ resources: ['dist/*'], matches: ['<all_urls>'] }],
   }
   if (isDev) {

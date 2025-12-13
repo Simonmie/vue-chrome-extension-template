@@ -8,7 +8,11 @@ const connect = () => {
       if (c && c.runtime && typeof c.runtime.reload === 'function') c.runtime.reload()
     }
     es.onerror = () => {
-      try { es.close() } catch (e) { void e }
+      try {
+        es.close()
+      } catch (e) {
+        void e
+      }
       setTimeout(connect, 1000)
     }
   } catch {
@@ -23,7 +27,7 @@ connect()
 
 const c = globalThis.chrome
 if (c && c.action && c.sidePanel) {
-  c.action.onClicked.addListener(async tab => {
+  c.action.onClicked.addListener(async (tab) => {
     try {
       if (tab && tab.windowId != null) {
         await c.sidePanel.open({ windowId: tab.windowId })

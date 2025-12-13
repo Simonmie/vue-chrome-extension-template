@@ -41,7 +41,7 @@ const extensionHmrPlugin = () => {
           })
           clients.push(res)
           req.on('close', () => {
-            clients = clients.filter(c => c !== res)
+            clients = clients.filter((c) => c !== res)
           })
           res.write(`data: connected\n\n`)
         } else {
@@ -49,11 +49,11 @@ const extensionHmrPlugin = () => {
           res.end()
         }
       })
-      await new Promise(resolve => server.listen(port, resolve))
+      await new Promise((resolve) => server.listen(port, resolve))
     },
     async writeBundle() {
       if (!isDev) return
-      clients.forEach(c => {
+      clients.forEach((c) => {
         try {
           c.write(`data: reload\n\n`)
         } catch (e) {
@@ -99,11 +99,14 @@ export default defineConfig({
         options: r('src/options/index.html'),
         popup: r('src/popup/index.html'),
         sidepanel: r('src/sidepanel/index.html'),
-        ...(isDev ? { 'src/background/dev-hmr': r('src/background/dev-hmr.js') } : {}),
+        ...(isDev
+          ? { 'src/background/dev-hmr': r('src/background/dev-hmr.js') }
+          : { 'src/background/main': r('src/background/main.js') }),
       },
       output: {
-        entryFileNames: chunk => {
+        entryFileNames: (chunk) => {
           if (chunk.name === 'src/background/dev-hmr') return 'script/dev-hmr.js'
+          if (chunk.name === 'src/background/main') return 'script/background.js'
           return 'script/[name]-[hash].js'
         },
         chunkFileNames: 'script/[name]-[hash].js',
