@@ -12,13 +12,7 @@
   "permissions": [
     "storage"
   ],
-  "host_permissions": [
-    "http://localhost:3000/*"
-  ],
-  "background": {
-    "service_worker": "dist/script/dev-hmr.js",
-    "type": "module"
-  },
+  "host_permissions": [],
   "web_accessible_resources": [
     {
       "resources": [
@@ -28,8 +22,5 @@
         "<all_urls>"
       ]
     }
-  ],
-  "content_security_policy": {
-    "extension_pages": "script-src 'self' http://localhost:3000; object-src 'self'; connect-src 'self' ws://localhost:3000 http://localhost:3000"
-  }
+  ]
 }
