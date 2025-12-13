@@ -3,7 +3,7 @@
     <img src="/icons/logo-128.png" alt="Logo" class="logo" />
     <p class="subtitle">Vue Chrome Extension Template</p>
     <p class="description">
-      一个基于 Vue 3 + TypeScript + Vite 的 Chrome 扩展开发模板，支持热更新、侧边栏、弹窗等功能。
+      一个基于 Vue 3 + Vite 的 Chrome 扩展开发模板，支持热更新、侧边栏、弹窗等功能。
     </p>
   </div>
 </template>
