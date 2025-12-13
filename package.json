@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "dev:ext": "NODE_ENV=development vite build --watch",
+    "dev:ext": "cross-env NODE_ENV=development vite build --watch",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint . --fix --cache",
@@ -21,6 +21,7 @@
     "@eslint/js": "^9.39.1",
     "@vitejs/plugin-vue": "^6.0.2",
     "@vue/eslint-config-prettier": "^10.2.0",
+    "cross-env": "^10.1.0",
     "eslint": "^9.39.1",
     "eslint-plugin-vue": "~10.5.1",
     "globals": "^16.5.0",

@@ -1,5 +1,5 @@
 <template>
-  <div class="popup-component">这是一个弹窗</div>
+  <div class="popup-component">这是一个弹窗fghfgh</div>
 </template>
 
 <script setup></script>
