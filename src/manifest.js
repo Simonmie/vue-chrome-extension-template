@@ -1,4 +1,4 @@
-import { isDev, port } from './utils/config'
+import { isDev, port } from './utils/config.js'
 
 export const getManifest = () => {
   const m = {

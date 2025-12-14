@@ -1,24 +1,32 @@
-import { fileURLToPath, URL } from 'node:url'
+import { fileURLToPath, URL, pathToFileURL } from 'node:url'
 import { mkdirSync, existsSync } from 'node:fs'
 import fs from 'node:fs/promises'
 import http from 'node:http'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { r, isDev, port } from './src/utils/config'
-import { getManifest } from './src/manifest.js'
+
+const loadManifest = async () => {
+  const url = pathToFileURL(r('src/manifest.js')).href + `?t=${Date.now()}`
+  const mod = await import(url)
+  return mod.getManifest || mod.default
+}
 
 const generateManifestPlugin = () => {
   return {
     name: 'generate-manifest',
     apply: 'build',
     async buildStart() {
+      this.addWatchFile(r('src/manifest.js'))
       const dir = r('extension')
       if (!existsSync(dir)) mkdirSync(dir, { recursive: true })
-      const m = getManifest()
+      const getM = await loadManifest()
+      const m = getM()
       await fs.writeFile(r('extension/manifest.json'), JSON.stringify(m, null, 2))
     },
     async writeBundle() {
-      const m = getManifest()
+      const getM = await loadManifest()
+      const m = getM()
       await fs.writeFile(r('extension/manifest.json'), JSON.stringify(m, null, 2))
     },
   }
