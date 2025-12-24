@@ -10,6 +10,7 @@
     "dev": "vite",
     "dev:ext": "cross-env NODE_ENV=development vite build --watch",
     "build": "vite build",
+    "build:crx": "npm run build && node build-crx.js",
     "preview": "vite preview",
     "lint": "eslint . --fix --cache",
     "format": "prettier --write --experimental-cli src/"
@@ -18,10 +19,12 @@
     "vue": "^3.5.25"
   },
   "devDependencies": {
+    "@crxjs/vite-plugin": "^2.3.0",
     "@eslint/js": "^9.39.1",
     "@vitejs/plugin-vue": "^6.0.2",
     "@vue/eslint-config-prettier": "^10.2.0",
     "cross-env": "^10.1.0",
+    "crx": "^5.0.1",
     "eslint": "^9.39.1",
     "eslint-plugin-vue": "~10.5.1",
     "globals": "^16.5.0",
