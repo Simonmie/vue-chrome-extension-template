@@ -1,6 +1,8 @@
 # vue-chrome-extension-template
 
-![alt text](./docs/asset/logo.png)
+<p align="center">
+  <img src="docs/asset/logo.svg" width="200px" height="200px">
+</p>
 
 English | [中文](./README_zh.md)
 
