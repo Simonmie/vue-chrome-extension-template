@@ -1,10 +1,14 @@
+import { createRequire } from 'node:module'
 import { isDev, port } from './utils/config.js'
+
+const require = createRequire(import.meta.url)
+const pkg = require('../package.json')
 
 export const getManifest = () => {
   const m = {
     manifest_version: 3,
     name: 'Vue Chrome Extension',
-    version: '0.0.0',
+    version: pkg.version,
     icons: {
       16: 'dist/icons/logo-16.png',
       32: 'dist/icons/logo-32.png',
